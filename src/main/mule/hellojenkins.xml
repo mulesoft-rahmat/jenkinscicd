@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="05f4adec-8d92-4ef7-92d1-16cb4beb7cda" >
+		<http:listener-connection host="0.0.0.0" port="9094" />
+	</http:listener-config>
+	<flow name="hellojenkinsFlow" doc:id="d515ba56-0356-4735-8d2d-a02cd2097f45" >
+		<http:listener doc:name="Listener" doc:id="506b81b3-f067-4b60-83fd-db3b300007a9" config-ref="HTTP_Listener_config" path="test"/>
+		<logger level="INFO" doc:name="Logger" doc:id="50cef50a-e6b3-41d6-81eb-7b9d59a0e144" message="start log"/>
+		<set-payload value='#["Welcome to Jenkins Pipeline"]' doc:name="payloadset" doc:id="29e23074-b484-4eba-9523-f68160e798a9" />
+	</flow>
+</mule>
